@@ -37,6 +37,7 @@ var triadic = backgroundColor - r.random(180);
 //background
 r.rect(0, 0, r.width, r.height)
 .fill ('hsv', backgroundColor, saturation, 100)
+.stroke(false)
 // .fill(255)
 
 // if (lineColor < 0) {
@@ -68,7 +69,7 @@ r.rect(0, 0, r.width, r.height)
       .lineTo(0, -800)
       .lineTo(200, 200)
       .stroke(false)
-      .fill ('hsv', backgroundColor, saturation - 30, 100)
+      .fill ('hsv', backgroundColor, saturation - 35, 100)
 
 //back tension
 for(var i = 0; i < endPoints; i++){
@@ -85,7 +86,7 @@ for(var i = 0; i < endPoints; i++){
 for(var i = 0; i < startPoints; i++){
     r.line(xTwo, yTwo, meetX - margin, meetY + cirRadius/2)
     // .stroke ('hsv', lineColor - 15, 100, brightness)
-    .stroke ('hsv', lineColor + 15, 100, brightness)
+    .stroke ('hsv', lineColor, 100, brightness)
     .strokeWidth(2)
     xTwo += 20;
     yTwo -= 20;
@@ -98,7 +99,7 @@ for(var i = 0; i < startPoints; i++){
   for(var i = 0; i < endPoints; i++){
     r.line(xThree, yThree, meetX - margin/2, meetY + cirRadius/2 + margin)
     // .stroke ('hsv', lineColor, 100, brightness)
-    .stroke ('hsv', lineColor - 15, 100, brightness)
+    .stroke ('hsv', lineColor, 100, brightness)
     .strokeWidth(2)
     xThree += 20;
     yThree += 20;
