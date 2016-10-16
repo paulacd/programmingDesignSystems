@@ -95,7 +95,6 @@ for(var i = 0; i < startPoints; i++){
 
 
   //bottom tension
-
   for(var i = 0; i < endPoints; i++){
     r.line(xThree, yThree, meetX - margin/2, meetY + cirRadius/2 + margin)
     // .stroke ('hsv', lineColor, 100, brightness)
