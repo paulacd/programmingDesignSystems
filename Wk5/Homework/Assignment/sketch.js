@@ -16,9 +16,11 @@ var offset = 17.32 * SCALE;
 // when the loading is done.
 f.load(function(err) {
 
+  r.rect(0, 0, r.width, r.height).fill(0)
+
   // Get a path of the text "Rune" from the font
   // a x,y 200,200 and font size 120.
-  var path = f.toPath("HONEYCOMB", 100, 450, 300)
+  var path = f.toPath("HONEYCOMB", 120, 480, 300)
     .fill(false)
     .stroke(false)
 
@@ -38,12 +40,12 @@ f.load(function(err) {
       for(var y = 0; y < r.height; y+= 34.64  * SCALE) {
         if(poly.contains(x, y)) {
           if (x % (60 * SCALE)  == 0){
-            hex(x, y + offset, 20 * SCALE);
+            hex(x, y + offset, 20 * SCALE)
           } else {
             hex(x, y, 20 * SCALE);
           }
-          
-          console.log(x, y);
+
+          // console.log(x, y);
         }
       }
     }
@@ -53,25 +55,25 @@ f.load(function(err) {
     // var radius = 20;
     var radius = myRadius;
     var points = 6;
+    var shape = r.polygon(0, 0);
+    var spacing = 360/points;
 
-      // for(var i = 0; i < points; i++) {
+    for(var j = 0; j < points; j++) {
 
-        var shape = r.polygon(0, 0);
-        var spacing = 360/points;
+      var S = r.random(50, 70);
+      var H = r.random(25, 50);
 
-          for(var j = 0; j < points; j++) {
-            //first calculate myX as if it's 0,0 and then move it by myX and myY
-            var x = Math.cos(Rune.radians(j * spacing)) * radius + myX;
-            var y = Math.sin(Rune.radians(j * spacing)) * radius + myY;
-            shape.lineTo(x, y)
-            // .stroke(false);
-            .fill(false)
-          }
-
-        // } 
+      //first calculate myX as if it's 0,0 and then move it by myX and myY
+      var x = Math.cos(Rune.radians(j * spacing)) * radius + myX;
+      var y = Math.sin(Rune.radians(j * spacing)) * radius + myY;
+      shape.lineTo(x, y)
+      .fill(false)
+      .stroke('hsv', H, S, 100)
+      // .strokeWidth(1.5)
+    }
   }
 
-poly.removeParent();
+  poly.removeParent();
 
   r.draw();
 });
