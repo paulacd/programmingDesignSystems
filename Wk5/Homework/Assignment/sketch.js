@@ -69,7 +69,7 @@ f.load(function(err) {
       shape.lineTo(x, y)
       .fill(false)
       .stroke('hsv', H, S, 100)
-      // .strokeWidth(1.5)
+      .strokeWidth(1.3);
     }
   }
 
