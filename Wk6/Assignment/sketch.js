@@ -7,18 +7,41 @@ var r = new Rune({
 
 var spacing = 30;
 
-for(var x = 0; x < r.width; x += spacing) {
-  for(var y = 0; y < r.height; y += spacing) {
+// if r.width is 300, and r.height is 900, then numTriangles in sectionA
+// is 300/spacing * (900/3)/spacing, which is 9000
+// ie. 300 triangles in section.... pick a random number between 0 and 300
+
+
+var count = 0;
+
+var numX = (r.width * 0.3)/spacing;
+var numY = (r.height/3) / spacing;
+
+var xSectionA = Math.floor(r.random(0,numX)) * spacing;
+var ySectionA = Math.floor(r.random(0,numY)) * spacing;
+
+
+console.log(xSectionA, ySectionA);
+
+for(var x = 0; x < r.width; x += spacing) { // this is 30 iterations
+  for(var y = 0; y < r.height; y += spacing) { // this 90 iterations
 
     var hue;
     var sat;
     var bri;
 
     if (y < r.height * 0.33) {
-      hue = (r.random(215, 270));
+      if (x == xSectionA * 3 && y == ySectionA){
+        hue = 0;
+      } 
+      else {
+        hue = (r.random(215, 270));
+      }
       sat = (100);
       bri = (r.random(50, 60));
-
+      // if (){
+      //   hue = (0);
+      // }
     } else if (y > r.height * 0.33 && y < r.height * 0.66){
       hue = (r.random(100, 160));
       sat = (r.random(60, 80));
@@ -30,8 +53,11 @@ for(var x = 0; x < r.width; x += spacing) {
       bri = (r.random(70, 80));
 
     }
+
     var offset = 4;
 
+        console.log('its true');
+      
       hue += (r.random(-offset, offset));
       sat += (r.random(-offset, offset));
       bri += (r.random(-offset, offset));
@@ -48,6 +74,8 @@ for(var x = 0; x < r.width; x += spacing) {
       sat += (r.random(-offset, offset));
       bri += (r.random(-offset, offset));
     r.triangle(x, y, x + (spacing/2), y + (spacing/2), x, y + spacing).fill('hsv', hue, sat, bri).stroke('hsv', hue, sat, bri)
+  
+    count++; // this keeps track of how many iterations you've gone through
   }
 }
 
