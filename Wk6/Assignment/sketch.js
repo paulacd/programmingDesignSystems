@@ -2,24 +2,30 @@ var r = new Rune({
   container: "#canvas",
   width: 600,
   height: 800,
-  debug: true
+  // debug: true
 });
 
 var spacing = 30;
+var f = new Rune.Font("../Memimas.ttf");
 
-// if r.width is 300, and r.height is 900, then numTriangles in sectionA
-// is 300/spacing * (900/3)/spacing, which is 9000
-// ie. 300 triangles in section.... pick a random number between 0 and 300
+// f.load(function(err) {
 
+//  var path = f.toPath("Le Petit Prince", 150, 200, 200)
+//   .fill(255, 0, 0)
 
-var count = 0;
+var cols = Math.floor(r.width / spacing);
+var colThird = Math.floor(cols / 3);
+var rows = Math.floor(r.height / spacing);
+var rowThird = Math.floor(rows / 3);
 
-var numX = (r.width * 0.3)/spacing;
-var numY = (r.height/3) / spacing;
+var xSectionA = Math.floor(r.random(colThird * 1.1, colThird * 1.4)) * spacing;//Math.floor(r.random(0,numX)) * spacing;
+var ySectionA = Math.floor(r.random(rowThird)) * spacing;
 
-var xSectionA = Math.floor(r.random(0,numX)) * spacing;
-var ySectionA = Math.floor(r.random(0,numY)) * spacing;
+var xSectionB = Math.floor(r.random(colThird * 2.3, cols)) * spacing;
+var ySectionB = Math.floor(r.random(rowThird, rowThird * 2)) * spacing;
 
+var xSectionC = Math.floor(r.random(0, colThird * 2.3)) * spacing;
+var ySectionC = Math.floor(r.random(rowThird *2, rowThird * 3)) * spacing;
 
 console.log(xSectionA, ySectionA);
 
@@ -31,27 +37,39 @@ for(var x = 0; x < r.width; x += spacing) { // this is 30 iterations
     var bri;
 
     if (y < r.height * 0.33) {
-      if (x == xSectionA * 3 && y == ySectionA){
+      //if (x == xSectionA * 3 && y == ySectionA){
+      if (x == xSectionA && y == ySectionA){
         hue = 0;
+        sat = 100;
+        bri = (r.random(60, 80));
       } 
       else {
         hue = (r.random(215, 270));
+        sat = 100;
+        bri = (r.random(30, 40));
       }
-      sat = (100);
-      bri = (r.random(50, 60));
-      // if (){
-      //   hue = (0);
-      // }
-    } else if (y > r.height * 0.33 && y < r.height * 0.66){
-      hue = (r.random(100, 160));
-      sat = (r.random(60, 80));
-      bri = (r.random(40, 50));
+      
 
+    } else if (y > r.height * 0.33 && y < r.height * 0.66){
+      if (x == xSectionB && y == ySectionB){
+        hue = 25;
+        sat = 90;
+        bri = 80;
+      } else {
+        hue = (r.random(100, 160));
+        sat = (r.random(60, 80));
+        bri = (r.random(40, 50));
+      }
     } else {
+      if (x == xSectionC && y == ySectionC){
+        hue = 125;
+        sat = 100;
+        bri = 70;
+      } else {
       hue = (r.random(40, 50));
       sat = (40, 60);
       bri = (r.random(70, 80));
-
+      }
     }
 
     var offset = 4;
@@ -75,10 +93,15 @@ for(var x = 0; x < r.width; x += spacing) { // this is 30 iterations
       bri += (r.random(-offset, offset));
     r.triangle(x, y, x + (spacing/2), y + (spacing/2), x, y + spacing).fill('hsv', hue, sat, bri).stroke('hsv', hue, sat, bri)
   
-    count++; // this keeps track of how many iterations you've gone through
+    }
   }
-}
 
+//test rectangles to verify section positions
+// r.rect(xSectionA, ySectionA, spacing, spacing).fill(true)
+// r.rect(xSectionB, ySectionB, spacing, spacing).fill(true)
+// r.rect(xSectionC, ySectionC, spacing, spacing).fill(true)
+
+//draw the grid for placement. To show/hide comment out the debug line at the top
 var grid = r.grid({
   x: 0,
   y: 0,
@@ -89,4 +112,9 @@ var grid = r.grid({
   rows: 3
 });
 
+
 r.draw();
+
+
+
+// });
