@@ -8,10 +8,7 @@ var r = new Rune({
 var spacing = 30;
 var f = new Rune.Font("../Memimas.ttf");
 
-// f.load(function(err) {
-
-//  var path = f.toPath("Le Petit Prince", 150, 200, 200)
-//   .fill(255, 0, 0)
+f.load(function(err) {
 
 var cols = Math.floor(r.width / spacing);
 var colThird = Math.floor(cols / 3);
@@ -112,9 +109,12 @@ var grid = r.grid({
   rows: 3
 });
 
+ var path = f.toPath("Le Petit Prince", 150, 200, 200)
+  .fill(255, 0, 0)
+
 
 r.draw();
 
 
 
-// });
+});
