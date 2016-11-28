@@ -22,9 +22,6 @@ function drawArc(x, y, rad, rot) {
 drawArc(200, 200, 100, 0)
 drawArc(400, 200, 100, 91)
 
-
-
-/*
 var length = 200
 var radius = length /2
 var startX = 0
@@ -52,7 +49,7 @@ var cenShape = [
   r.triangle(length/2, length/2 - (length * 0.16), length/2 - (length * 0.15), length/2 + (length * 0.11), length/2 + (length * 0.15), length/2 + (length * 0.11)).stroke(false).fill(shape)
 ]
 
-*/
+
 
 r.draw();
 
