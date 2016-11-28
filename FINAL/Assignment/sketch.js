@@ -5,22 +5,21 @@ var r = new Rune({
   debug: true
 });
 
-function drawArc(x, y, rad, rot) {
+function drawArc(x, y, rad, rot, col) {
 
   var arc = r.polygon(x, y)
     .lineTo(0, 0)
     .lineTo(rad, 0)
     .rotate(rot, x, y)
+    .fill(col)
+    .stroke(false)
 
-  for(var i = 0; i < 90; i++) {
+  for(var i = 0; i < 91; i++) {
     var x = Math.cos(r.radians(i)) * rad;
     var y = Math.sin(r.radians(i)) * rad;
     arc.lineTo(x, y);
   }
 }
-
-drawArc(200, 200, 100, 0)
-drawArc(400, 200, 100, 91)
 
 var length = 200
 var radius = length /2
@@ -33,12 +32,27 @@ var disTraveled = new Rune.Color ('hsv', 33, 29, 86)
 var shape = new Rune.Color ('hsv', 224, 56, 47)
 // var guest = new Rune.Color ('hsv', )
 
+// var Q1 = prompt("friend of the bride or the groom?")
+// var Q2 = prompt("where do you know them from?")
+// var Q3 = prompt("where are you traveling from?")
+
+// console.log(Q1)
+// console.log(Q2)
+// console.log(Q3)
+
+
 var tile = r.rect(startX, startY, length, length).fill(p2).stroke(false)
 
-var topLeft = r.circle(startX, startY, radius).fill(p1).stroke(false)
-var topRight = r.circle(startX + length, startY, radius).fill(p1).stroke(false)
-var bottomLeft = r.circle(startX, startY + length, radius).fill(p1).stroke(false)
-var bottomRight = r.circle(startX + length, startY + length, radius).fill(p1).stroke(false)
+drawArc(0, 0, radius, 0, p1)
+drawArc(length, 0, radius, 90, p1)
+drawArc(length, length, radius, 180, p1)
+drawArc(0, length, radius, 270, p1)
+
+
+// var topLeft = r.circle(startX, startY, radius).fill(p1).stroke(false)
+// var topRight = r.circle(startX + length, startY, radius).fill(p1).stroke(false)
+// var bottomLeft = r.circle(startX, startY + length, radius).fill(p1).stroke(false)
+// var bottomRight = r.circle(startX + length, startY + length, radius).fill(p1).stroke(false)
 
 var cenCir = r.circle(length/2, length/2, length * 0.2).fill(disTraveled).stroke(false)
 
@@ -49,9 +63,11 @@ var cenShape = [
   r.triangle(length/2, length/2 - (length * 0.16), length/2 - (length * 0.15), length/2 + (length * 0.11), length/2 + (length * 0.15), length/2 + (length * 0.11)).stroke(false).fill(shape)
 ]
 
+if(selected) {
+  r.draw();  
+}
 
 
-r.draw();
 
 
 

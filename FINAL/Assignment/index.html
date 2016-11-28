@@ -3,6 +3,14 @@
 <head>
   <meta charset="utf-8">
   <title>Empty project</title>
+  <script>
+    var selected = false;
+    function test() {
+      console.log('clicked- innside');
+      selected = true;
+    }
+  </script>
+  
   <script type="text/javascript" src="../rune.js"></script>
   <script type="text/javascript" src="../rune.pixels.js"></script>
   <script type="text/javascript" src="../rune.noise.js"></script>
@@ -19,7 +27,23 @@
   </style>
 </head>
 <body>
+    <div class="questions">
+      <input type="radio" name="Q1" value="0"> Bride<br>
+      <input type="radio" name="Q1" value="1"> Groom<br>
+    </div>
+    <div class="questions">
+      <input type="radio" name="Q2" value="0"> Work/School<br>
+      <input type="radio" name="Q2" value="1"> Life<br>
+    </div>
+    <div class="questions">
+      <input type="radio" name="Q3" value="0"> North<br>
+      <input type="radio" name="Q3" value="1"> South<br>
+    </div>
+    <button onclick="test()">Submit</button>
+
+
   <div id="canvas"></div>
   <script type="text/javascript" src="sketch.js"></script>
 </body>
 </html>
+
