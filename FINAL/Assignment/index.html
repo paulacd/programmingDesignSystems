@@ -3,14 +3,6 @@
 <head>
   <meta charset="utf-8">
   <title>Empty project</title>
-  <script>
-    var selected = false;
-    function test() {
-      console.log('clicked- innside');
-      selected = true;
-    }
-  </script>
-  
   <script type="text/javascript" src="../rune.js"></script>
   <script type="text/javascript" src="../rune.pixels.js"></script>
   <script type="text/javascript" src="../rune.noise.js"></script>
@@ -28,18 +20,23 @@
 </head>
 <body>
     <div class="questions">
+      <h4>Are you a guest of the bride or the groom?</h4>
       <input type="radio" name="Q1" value="0"> Bride<br>
       <input type="radio" name="Q1" value="1"> Groom<br>
     </div>
+    <br>
     <div class="questions">
+      <h4>Where do you know them from?</h4>
       <input type="radio" name="Q2" value="0"> Work/School<br>
       <input type="radio" name="Q2" value="1"> Life<br>
     </div>
+    <br>
     <div class="questions">
-      <input type="radio" name="Q3" value="0"> North<br>
-      <input type="radio" name="Q3" value="1"> South<br>
+      <h4>Where are you coming from?</h4>
+      <input type="radio" name="Q3" value="0"> North / East <br>
+      <input type="radio" name="Q3" value="1"> South / West<br>
     </div>
-    <button onclick="test()">Submit</button>
+    <button onclick="drawPattern()">Submit</button>
 
 
   <div id="canvas"></div>

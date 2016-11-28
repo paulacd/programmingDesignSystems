@@ -63,8 +63,10 @@ var cenShape = [
   r.triangle(length/2, length/2 - (length * 0.16), length/2 - (length * 0.15), length/2 + (length * 0.11), length/2 + (length * 0.15), length/2 + (length * 0.11)).stroke(false).fill(shape)
 ]
 
-if(selected) {
-  r.draw();  
+
+function drawPattern() {
+  console.log('inside JS file');
+  r.draw(); 
 }
 
 
