@@ -6,6 +6,11 @@
   <script type="text/javascript" src="../rune.js"></script>
   <script type="text/javascript" src="../rune.pixels.js"></script>
   <script type="text/javascript" src="../rune.noise.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+
   <style type="text/css">
     body {
       background-color: #EAEAEA;
@@ -19,22 +24,23 @@
   </style>
 </head>
 <body>
-<!--     <div class="questions" id="Q1">
+    <div class="questions" id="Q1">
       <h4>Are you a guest of the bride or the groom?</h4>
       <input type="radio" name="Q1" value="bride"> Bride<br>
       <input type="radio" name="Q1" value="groom"> Groom<br>
     </div>
     <div class="questions">
       <h4>Where do you know them from?</h4>
-      <input type="radio" id="Q2" value="work"> Work/School<br>
-      <input type="radio" id="Q2" value="life"> Life<br>
+      <input type="radio" name="Q2" value="work"> Work/School<br>
+      <input type="radio" name="Q2" value="family"> Family<br>
+      <input type="radio" name="Q2" value="life"> Life<br>
     </div>
     <div class="questions">
       <h4>Where are you coming from?</h4>
-      <input type="radio" id="Q3" value="north"> North / East <br>
-      <input type="radio" id="Q3" value="south"> South / West<br>
+      <input type="radio" name="Q3" value="north"> North / East <br>
+      <input type="radio" name="Q3" value="south"> South / West<br>
     </div>
-    <button onclick="drawPattern()">Submit</button> -->
+    <button onclick="drawPattern()">Submit</button>
 
 
   <div id="canvas"></div>
