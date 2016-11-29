@@ -16,6 +16,11 @@ function drawPattern() {
     var q2Answer = $('input[name="Q2"]:checked').val();
     var q3Answer = $('input[name="Q3"]:checked').val();
 
+    document.getElementById("Q1").style.display = "none";
+    // document.getElementById("Q2").style.display = "none";
+    // document.getElementById("Q3").style.display = "none";
+    document.getElementById("btn").style.display = "none";
+
   function drawArc(x, y, rad, rot, col) {
 
     var arc = r.polygon(x, y)
@@ -32,16 +37,31 @@ function drawPattern() {
     }
   }
 
-  var length = 400
+  var length = 800
   var radius = length /2
   var startX = 0
   var startY = 0
 
+  var sat = 29; 
+  var hue = 33;
+
+  //   if (q2Answer == 0){
+  //   sat -= 30
+  //   hue -= 20
+
+  // } else if (q2Answer == 1){
+  //   sat += 30
+  //   hue += 20
+
+  // } else {
+  //   sat += 0
+  // }
+
   //BLUES
-  // var p1 = new Rune.Color ('hsv', 214, 22, 67)
-  // var p2 = new Rune.Color ('hsv', 223, 88, 21)
-  // var disTraveled = new Rune.Color ('hsv', 33, 29, 86)
-  // var meet = new Rune.Color ('hsv', 224, 56, 47)
+  var p1 = new Rune.Color ('hsv', 214, 22, 67)
+  var p2 = new Rune.Color ('hsv', 223, 88, 21)
+  var disTraveled = new Rune.Color ('hsv', hue, 29, 86)
+  var meet = new Rune.Color ('hsv', 224, 56, 47)
 
   // //POY--PEACOCK
 
@@ -51,25 +71,36 @@ function drawPattern() {
   // var meet = new Rune.Color ('hsv', )
 
 
-  //KC--PINK & BLUE
-  var p1 = new Rune.Color('hsv', 345, 9, 87);
-  var p2 = new Rune.Color('hsv', 203, 65, 30);
-  var disTraveled = new Rune.Color ('hsv', 43, 31, 77)
-  var meet = new Rune.Color ('hsv', 336, 44, 75)
+  // //KC--PINK & BLUE
+  // var p1 = new Rune.Color('hsv', 345, 9, 87);
+  // var p2 = new Rune.Color('hsv', 203, 65, 30);
+  // var disTraveled = new Rune.Color ('hsv', 43, 31, 77)
+  // var meet = new Rune.Color ('hsv', 336, 44, 75)
 
 
 
-  var tile = r.rect(startX, startY, length, length).fill(p2).stroke(false)
+  var background = r.rect(startX, startY, length, length).stroke(false)
 
-  drawArc(0, 0, radius, 0, p1)
-  drawArc(length, 0, radius, 90, p1)
-  drawArc(length, length, radius, 180, p1)
-  drawArc(0, length, radius, 270, p1)
+  if (q1Answer == "1") {
+    background.fill(p1)
+    drawArc(0, 0, radius, 0, p2)
+    drawArc(length, 0, radius, 90, p2)
+    drawArc(length, length, radius, 180, p2)
+    drawArc(0, length, radius, 270, p2)
+  } else {
+    background.fill(p2)
+    drawArc(0, 0, radius, 0, p1)
+    drawArc(length, 0, radius, 90, p1)
+    drawArc(length, length, radius, 180, p1)
+    drawArc(0, length, radius, 270, p1)
+  }
+
 
 
   var cenCir = r.circle(length/2, length/2, length * 0.19).fill(disTraveled).stroke(false)
 
   centerShape(8);
+  // centerShape(q3Answer);
 
   function centerShape(pnts){
     var cenRad = radius * 0.2;
@@ -109,26 +140,3 @@ function drawPattern() {
 
 
 
-
-
-
-
-
-
-
-// var size = 200
-// var offset = 0;
-// var reduce= 50;
-
-// for (var i = 0; i < 4; i++){
-//   // offset = size/2
-//   var rect = r.rect(100 + offset, 100 + offset, size, size).strokeWidth(4)
-//   size -= reduce;
-//   offset += reduce/2;
-
-//   if (i%2 == 0){
-//     rect.fill(212, 158, 153)
-//   }else {
-//     rect.fill(116, 82, 95)
-//   }
-// }
