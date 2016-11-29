@@ -29,7 +29,7 @@ var startY = 0
 var p1 = new Rune.Color ('hsv', 214, 22, 67)
 var p2 = new Rune.Color ('hsv', 223, 88, 21)
 var disTraveled = new Rune.Color ('hsv', 33, 29, 86)
-var shape = new Rune.Color ('hsv', 224, 56, 47)
+var meet = new Rune.Color ('hsv', 224, 56, 47)
 // var guest = new Rune.Color ('hsv', )
 
 // var Q1 = prompt("friend of the bride or the groom?")
@@ -49,25 +49,46 @@ drawArc(length, length, radius, 180, p1)
 drawArc(0, length, radius, 270, p1)
 
 
-// var topLeft = r.circle(startX, startY, radius).fill(p1).stroke(false)
-// var topRight = r.circle(startX + length, startY, radius).fill(p1).stroke(false)
-// var bottomLeft = r.circle(startX, startY + length, radius).fill(p1).stroke(false)
-// var bottomRight = r.circle(startX + length, startY + length, radius).fill(p1).stroke(false)
-
 var cenCir = r.circle(length/2, length/2, length * 0.2).fill(disTraveled).stroke(false)
 
+centerShape(8);
 
-var cenShape = [
-  r.rect(length/2 - (length * 0.1), length/2 - (length * 0.1), length * 0.2, length * 0.2).stroke(false).fill(shape).rotate(45, length/2, length/2),
-  r.circle(length/2, length/2, length * 0.1).stroke(false).fill(shape),
-  r.triangle(length/2, length/2 - (length * 0.16), length/2 - (length * 0.15), length/2 + (length * 0.11), length/2 + (length * 0.15), length/2 + (length * 0.11)).stroke(false).fill(shape)
-]
+function centerShape(pnts){
+  var cenRad = radius * 0.2;
+  // var points = [3, 4, 6, 40];
+  var points = pnts;
+
+  // var shape = r.polygon(r.width/2, 125 + (i * 200));
+  var shape = r.polygon(length/2, length/2);
+  var spacing = 360/points;
+
+  for(var i = 0; i < points; i++) {
+    var x = Math.cos(Rune.radians(i * spacing)) * cenRad;
+    var y = Math.sin(Rune.radians(i * spacing)) * cenRad;
+    shape.lineTo(x, y);
+  }
+
+  if (points == 5) {
+    shape.rotate(198, length/2, length/2)
+  }
+
+  shape.fill(meet).stroke(false)
+
+}
+
 
 
 function drawPattern() {
   console.log('inside JS file');
-  r.draw(); 
+  // console.log(document.getElementsByClassName("Q1"));
+  // console.log(document.getElementById("Q1").value(0));
+  console.log(document.getElementsByName("Q1").value);
+  // console.log(document.getElementById("Q2").value);
+  // console.log(document.getElementById("Q3").value);
+  
 }
+
+r.draw(); 
 
 
 
