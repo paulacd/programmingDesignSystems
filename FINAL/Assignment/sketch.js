@@ -17,8 +17,8 @@ function drawPattern() {
     var q3Answer = $('input[name="Q3"]:checked').val();
 
     document.getElementById("Q1").style.display = "none";
-    // document.getElementById("Q2").style.display = "none";
-    // document.getElementById("Q3").style.display = "none";
+    document.getElementById("Q2").style.display = "none";
+    document.getElementById("Q3").style.display = "none";
     document.getElementById("btn").style.display = "none";
 
   function drawArc(x, y, rad, rot, col) {
@@ -81,6 +81,7 @@ function drawPattern() {
 
   var background = r.rect(startX, startY, length, length).stroke(false)
 
+  //depending on the answer to question #1, the colors of the main shapes will be determined
   if (q1Answer == "1") {
     background.fill(p1)
     drawArc(0, 0, radius, 0, p2)
@@ -95,12 +96,24 @@ function drawPattern() {
     drawArc(0, length, radius, 270, p1)
   }
 
+  var close;
 
+  if (q2Answer == 0) {
+    close = 0.19;
 
-  var cenCir = r.circle(length/2, length/2, length * 0.19).fill(disTraveled).stroke(false)
+  } else if (q2Answer ==1) {
+    close = 0.17;
 
-  centerShape(8);
-  // centerShape(q3Answer);
+  } else {
+    close = 0.15;
+
+  }
+
+  var cenCir = r.circle(length/2, length/2, length * close).fill(disTraveled).stroke(false)
+
+  // centerShape(8);
+  //use the value of answer #3 to determine how many sides your polygon will have
+  centerShape(q3Answer);
 
   function centerShape(pnts){
     var cenRad = radius * 0.2;

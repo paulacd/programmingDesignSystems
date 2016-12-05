@@ -41,9 +41,24 @@ var yokoTri = r.triangle(Yoko.x1, Yoko.y1, Yoko.x2, Yoko.y2, Yoko.x3, Yoko.y3).s
 
 var intersection = line_intersect(John.x1, John.y1, John.x2, John.y2, Yoko.x1, Yoko.y1, Yoko.x3, Yoko.y3)
 
+var numCircles = 3; 
+// var decrement = 0.5;
 
-for (var i = 0; i < 5; i++) {
-  
+for (var i = 0; i < numCircles; i++) {
+  var half = numCircles/2
+  var size = i + 5
+
+  // if (half <= i){
+  //   // currentRad += decrement
+  //   size *= decrement
+  // } else {
+  //   // currentRad -= decrement
+  //   size = size/decrement
+  // }
+
+  r.circle(intersection.x, intersection.y - 100 + i * (-20), size).fill(0, 0.5).stroke(false)
+
+
 
 }
 
